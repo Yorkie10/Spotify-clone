@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		582857A729AE154000DC5583 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582857A629AE154000DC5583 /* AlertManager.swift */; };
 		5835CF912980F2B500D8739D /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5835CF902980F2B500D8739D /* RegistrationPresenter.swift */; };
 		583884A7298C1B300002227A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583884A6298C1B300002227A /* LogInViewController.swift */; };
 		583884A9298C20EF0002227A /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583884A8298C20EF0002227A /* LogInPresenter.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		1B0F958ECE772C28DAA4033A /* Pods-Spotify clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify clone.debug.xcconfig"; path = "Target Support Files/Pods-Spotify clone/Pods-Spotify clone.debug.xcconfig"; sourceTree = "<group>"; };
+		582857A629AE154000DC5583 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		5835CF902980F2B500D8739D /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		583884A6298C1B300002227A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		583884A8298C20EF0002227A /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
@@ -94,6 +96,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		582857A129AE13B400DC5583 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				588DE9B1297A8B5E00AF21AD /* BaseViewController.swift */,
+				587A6A24298143A300A23633 /* BaseNavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		582857A229AE13F200DC5583 /* SpotifyUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				582857A329AE143A00DC5583 /* Views */,
+				584772D0299CE95B00CD5271 /* SNavigationBar.swift */,
+				588DE9B3297A91D500AF21AD /* SLabel.swift */,
+			);
+			path = SpotifyUIKit;
+			sourceTree = "<group>";
+		};
+		582857A329AE143A00DC5583 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				582857A429AE144300DC5583 /* Buttons */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		582857A429AE144300DC5583 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				584772D2299D029E00CD5271 /* TapPaddingBarButton.swift */,
+				583EAB7429A39916002B9C3D /* IndicatorButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		5835CF8E2980F28D00D8739D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +334,8 @@
 		58AA73F229793409005BFE6F /* Spotify clone */ = {
 			isa = PBXGroup;
 			children = (
+				582857A229AE13F200DC5583 /* SpotifyUIKit */,
+				582857A129AE13B400DC5583 /* Base */,
 				58D64B3429A638CF0031773A /* GlobalExtensions */,
 				587221E029800D1F008852CB /* AppDelegate */,
 				589A32AF29829FFD009E4A46 /* Main */,
@@ -303,16 +343,11 @@
 				587A6A1F29813D8D00A23633 /* AppRouter */,
 				588DE9BB297A9C1400AF21AD /* Device */,
 				588DE9B8297A9B3400AF21AD /* Fonts */,
-				588DE9B1297A8B5E00AF21AD /* BaseViewController.swift */,
-				584772D0299CE95B00CD5271 /* SNavigationBar.swift */,
-				587A6A24298143A300A23633 /* BaseNavigationController.swift */,
-				588DE9B3297A91D500AF21AD /* SLabel.swift */,
-				584772D2299D029E00CD5271 /* TapPaddingBarButton.swift */,
-				583EAB7429A39916002B9C3D /* IndicatorButton.swift */,
 				584589B429A4F7260065B1F4 /* GoogleService-Info.plist */,
 				58AA73FC2979340A005BFE6F /* Assets.xcassets */,
 				58AA73FE2979340A005BFE6F /* LaunchScreen.storyboard */,
 				58AA74012979340A005BFE6F /* Info.plist */,
+				582857A629AE154000DC5583 /* AlertManager.swift */,
 			);
 			path = "Spotify clone";
 			sourceTree = "<group>";
@@ -478,6 +513,7 @@
 			files = (
 				583EAB70299F515D002B9C3D /* LoginWireframe.swift in Sources */,
 				589A32AE298292D5009E4A46 /* RegistrationAssembly.swift in Sources */,
+				582857A729AE154000DC5583 /* AlertManager.swift in Sources */,
 				587A6A25298143A300A23633 /* BaseNavigationController.swift in Sources */,
 				584772D3299D029E00CD5271 /* TapPaddingBarButton.swift in Sources */,
 				583884A7298C1B300002227A /* LogInViewController.swift in Sources */,
