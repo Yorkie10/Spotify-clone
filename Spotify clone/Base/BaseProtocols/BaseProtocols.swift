@@ -22,4 +22,8 @@ public protocol IBaseWireframe: AnyObject {
     
     var router: IAppRouter { get }
     var rootView: UIViewController? { get set }
+    
+    func showAlert(input: AlertInput)
+    func showInvalidEmailAlert()
+    func showInvalidPasswordAlert()
 }

@@ -12,7 +12,7 @@ protocol ILoginWireframe: IBaseWireframe {
 }
 
 final class LoginWireframe: ILoginWireframe {
-    
+ 
     var router: IAppRouter { AppRouter.shared }
     weak var rootView: UIViewController?
     

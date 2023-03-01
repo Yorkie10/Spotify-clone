@@ -10,9 +10,18 @@ import Foundation
 protocol ILoginPresenter: AnyObject {
     
     func closeTapped()
+    
+    func loginStart()
+    
+    
+    func acceptLoginData(withEmail email: String, andPassword password: String)
+    
 }
 
 final class LoginPresenter: ILoginPresenter {
+    
+    
+    private var loginData: LoginUserRequest!
     
     private let wireframe: ILoginWireframe
     private weak var view: ILoginView?
@@ -26,4 +35,22 @@ final class LoginPresenter: ILoginPresenter {
     func closeTapped() {
         wireframe.closeModule()
     }
+    
+    func acceptLoginData(withEmail email: String, andPassword password: String) {
+        loginData = LoginUserRequest(email: email, password: password)
+    }
+    
+    
+    func loginStart() {
+        if !AuthValidator.isValidEmail(for: loginData.email) {
+            wireframe.showInvalidEmailAlert()
+        }
+        
+        if !AuthValidator.isPasswordValid(for: loginData.password) {
+            wireframe.showInvalidPasswordAlert()
+        }
+    }
+    
 }
+    
+
