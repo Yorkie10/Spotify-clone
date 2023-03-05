@@ -65,6 +65,5 @@ final class AuthService {
         } catch let error {
             completion(error)
         }
-        
     }
 }

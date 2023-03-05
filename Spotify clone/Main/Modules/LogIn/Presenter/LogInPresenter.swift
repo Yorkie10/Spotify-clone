@@ -5,7 +5,7 @@
 //  Created by Yerkebulan Sharipov on 02.02.2023.
 //
 
-import Foundation
+import UIKit
 
 protocol ILoginPresenter: AnyObject {
     
@@ -13,18 +13,15 @@ protocol ILoginPresenter: AnyObject {
     
     func loginStart()
     
-    
     func acceptLoginData(withEmail email: String, andPassword password: String)
     
 }
 
 final class LoginPresenter: ILoginPresenter {
     
-    
-    private var loginData: LoginUserRequest!
-    
     private let wireframe: ILoginWireframe
     private weak var view: ILoginView?
+    private var loginData: LoginUserRequest!
     
     init(wireframe: ILoginWireframe,
          view: ILoginView ) {
@@ -42,15 +39,21 @@ final class LoginPresenter: ILoginPresenter {
     
     
     func loginStart() {
+        // email check
         if !AuthValidator.isValidEmail(for: loginData.email) {
             wireframe.showInvalidEmailAlert()
         }
-        
+        // password check
         if !AuthValidator.isPasswordValid(for: loginData.password) {
             wireframe.showInvalidPasswordAlert()
         }
+        
+        AuthService.shared.registerUser(with: loginData) { [weak self] wasRegistered, error in
+            if let error = error {
+                self?.wireframe.showAlert(input: AlertInput(message: error.message))
+            }
+        }
     }
-    
 }
     
 
