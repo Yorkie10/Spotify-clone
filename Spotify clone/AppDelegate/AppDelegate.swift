@@ -19,18 +19,16 @@ var window: UIWindow?
 
         AppRouter.assembler.apply(assemblies: assemblies(AssemblyStorage.assemblies))
         
-
-
         window = UIWindow()
         window?.makeKeyAndVisible()
-
         FirebaseApp.configure()
-        let userRequest = LoginUserRequest(email: "Nunez@gmail.com", password: "qwertty123")
-        AuthService.shared.registerUser(with: userRequest) { wasRegistered, error in
-            if let error = error {
-                print("😍, \(error)")
-            }
-        }
+        
+//        let userRequest = LoginUserRequest(email: "Nunez@gmail.com", password: "qwertty123")
+//        AuthService.shared.registerUser(with: userRequest) { wasRegistered, error in
+//            if let error = error {
+//                print("😍, \(error)")
+//            }
+//        }
         print("🌏", Auth.auth().currentUser?.email)
         
 //        let view = AppRouter.shared.resolver.resolve(IRegistrationView.self) as! UIViewController
