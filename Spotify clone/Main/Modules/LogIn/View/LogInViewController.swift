@@ -75,6 +75,7 @@ final class LogInViewController: BaseViewController {
         btn.setTitleColor(.black, for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
         btn.layer.cornerRadius = 21
+        btn.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -123,6 +124,14 @@ final class LogInViewController: BaseViewController {
             make.width.equalTo(40 + textWidth)
             make.height.equalTo(42)
         }
+    }
+    
+    @objc private func nextButtonTapped() {
+        
+        guard let email = emailTextfield.text,
+              let password = passwordTextfield.text else { return }
+        presenter?.acceptLoginData(withEmail: email, andPassword: password)
+        presenter?.loginStart()
     }
 }
 
