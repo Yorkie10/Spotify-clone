@@ -26,4 +26,6 @@ public protocol IBaseWireframe: AnyObject {
     func showAlert(input: AlertInput)
     func showInvalidEmailAlert()
     func showInvalidPasswordAlert()
+    
+    func showErrorSignIn()
 }

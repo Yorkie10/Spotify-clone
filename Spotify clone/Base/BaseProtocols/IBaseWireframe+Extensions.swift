@@ -39,4 +39,8 @@ public extension IBaseWireframe {
     func showInvalidPasswordAlert() {
         showAlert(input: AlertInput(title: "Invalid password", message: "Please enter a valid password"))
     }
+    
+    func showErrorSignIn() {
+        showAlert(input: AlertInput(title: "Error signing in", message: "The password is invalid or the user does not have a password"))
+    }
 }

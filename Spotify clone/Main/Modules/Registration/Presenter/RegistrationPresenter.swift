@@ -12,6 +12,7 @@ protocol IRegistrationPresenter: AnyObject {
     
     func viewDidLoad()
     func loginTapped(at index: Int)
+    func signUpTapped()
 }
 
 
@@ -35,11 +36,13 @@ final class RegistrationPresenter: IRegistrationPresenter {
     func loginTapped(at index: Int) {
       selectedButton = buttons[index]
         switch selectedButton {
-        case .login:
-            wireframe.pushToLogin()
         default:
             print("🤪Tapped AT \(buttons[index])")
         }
+    }
+    
+    func signUpTapped() {
+        wireframe.pushToLogin()
     }
     
     private func configureData() {

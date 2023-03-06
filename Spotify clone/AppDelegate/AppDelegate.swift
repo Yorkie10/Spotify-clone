@@ -30,20 +30,21 @@ var window: UIWindow?
 //            }
 //        }
         print("🌏", Auth.auth().currentUser?.email)
+    
         
-//        let view = AppRouter.shared.resolver.resolve(IRegistrationView.self) as! UIViewController
-//        AppRouter.shared.present(view: view, animatedDisplay: true, presentType: .root)
-
-        let view = AppRouter.shared.resolver.resolve(ILoginView.self) as! UIViewController
+        let view = AppRouter.shared.resolver.resolve(IRegistrationView.self) as! UIViewController
         AppRouter.shared.present(view: view, animatedDisplay: true, presentType: .root)
-        
-        if Auth.auth().currentUser == nil {
-            let view = AppRouter.shared.resolver.resolve(IRegistrationView.self) as! UIViewController
-            AppRouter.shared.present(view: view, animatedDisplay: true, presentType: .root)
-        } else {
-            let view = AppRouter.shared.resolver.resolve(ILoginView.self) as! UIViewController
-            AppRouter.shared.present(view: view, animatedDisplay: true, presentType: .root)
-        }
+
+//        let view = AppRouter.shared.resolver.resolve(ILoginView.self) as! UIViewController
+//        AppRouter.shared.present(view: view, animatedDisplay: true, presentType: .root)
+//        
+//        if Auth.auth().currentUser == nil {
+//            let view = AppRouter.shared.resolver.resolve(IRegistrationView.self) as! UIViewController
+//            AppRouter.shared.present(view: view, animatedDisplay: true, presentType: .root)
+//        } else {
+//            let view = AppRouter.shared.resolver.resolve(ILoginView.self) as! UIViewController
+//            AppRouter.shared.present(view: view, animatedDisplay: true, presentType: .root)
+//        }
 
         return true
     }

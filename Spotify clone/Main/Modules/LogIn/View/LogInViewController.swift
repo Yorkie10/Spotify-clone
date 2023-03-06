@@ -30,8 +30,15 @@ final class LogInViewController: BaseViewController {
         return view
     }()
     private let containerView = UIView()
+    private let userNameTitle = SLabel(.systemFont(ofSize: 20, weight: .bold), .white, .left, lines: 1, text: "Enter user name")
     private let emailTitle = SLabel(.systemFont(ofSize: 20, weight: .bold), .white, .left, lines: 1, text: "Enter e-mail")
     private let passwordTitle = SLabel(.systemFont(ofSize: 20, weight: .bold), .white, .left, lines: 1, text: "Enter password")
+    private let userNameTextfield: UITextField = {
+        let field = UITextField()
+        field.backgroundColor = .darkGrey
+        field.tintColor = .accentGreen
+        return field
+    }()
     private let emailTextfield: UITextField = {
         let field = UITextField()
         field.backgroundColor = .darkGrey
@@ -45,6 +52,17 @@ final class LogInViewController: BaseViewController {
         field.tintColor = .accentGreen
         field.isSecureTextEntry = true
         return field
+    }()
+    private lazy var userNameContainer: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 5
+        view.backgroundColor = .darkGrey
+        view.addSubview(userNameTextfield)
+        userNameTextfield.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 10))
+            make.height.equalTo(16)
+        }
+        return view
     }()
     private lazy var emailContainer: UIView = {
         let view = UIView()
@@ -93,9 +111,20 @@ final class LogInViewController: BaseViewController {
             make.edges.equalToSuperview()
             make.width.equalTo(view.snp.width)
         }
+        containerView.addSubview(userNameTitle)
+        userNameTitle.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(24)
+            make.leading.equalToSuperview().offset(30)
+        }
+        containerView.addSubview(userNameContainer)
+        userNameContainer.snp.makeConstraints { make in
+            make.top.equalTo(userNameTitle.snp.bottom)
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(46)
+        }
         containerView.addSubview(emailTitle)
         emailTitle.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
+            make.top.equalTo(userNameContainer.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(30)
         }
         containerView.addSubview(emailContainer)
@@ -106,7 +135,7 @@ final class LogInViewController: BaseViewController {
         }
         containerView.addSubview(passwordTitle)
         passwordTitle.snp.makeConstraints { make in
-            make.top.equalTo(emailTextfield.snp.bottom).offset(30)
+            make.top.equalTo(emailContainer.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(30)
         }
         containerView.addSubview(passwordContainer)
@@ -128,9 +157,10 @@ final class LogInViewController: BaseViewController {
     
     @objc private func nextButtonTapped() {
         
-        guard let email = emailTextfield.text,
+        guard let userName = userNameTextfield.text,
+              let email = emailTextfield.text,
               let password = passwordTextfield.text else { return }
-        presenter?.acceptLoginData(withEmail: email, andPassword: password)
+        presenter?.acceptLoginData(with: userName, address: email, and: password)
         presenter?.loginStart()
     }
 }

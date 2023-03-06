@@ -27,6 +27,7 @@ final class RegistrationViewController: BaseViewController {
     private let mainLabel = SLabel(.systemFont(ofSize: 26, weight: .bold), .white, .center, lines: 0, text: "Millions of Songs. Free on Spotify ")
     private lazy var signUpButton: IndicatorButton = {
         let button = IndicatorButton("Sign up free")
+        button.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
         button.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
@@ -66,6 +67,10 @@ final class RegistrationViewController: BaseViewController {
     
     @objc private func logInTapped(_ sender: UIButton) {
         presenter?.loginTapped(at: sender.tag)
+    }
+    
+    @objc private func signUpTapped() {
+        presenter?.signUpTapped()
     }
 }
 

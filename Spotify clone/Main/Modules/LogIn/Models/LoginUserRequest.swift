@@ -8,6 +8,7 @@
 import UIKit
 
 struct LoginUserRequest {
+    var userName: String
     var email: String
     var password: String
 }

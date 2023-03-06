@@ -19,7 +19,7 @@ final public class AuthValidator {
     
     static func isPasswordValid(for password: String) -> Bool {
         let password = password.trimmingCharacters(in: .whitespacesAndNewlines)
-        let passwordRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$#!%*?&]).{6,32}$"
+        let passwordRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
         let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordPred.evaluate(with: password)
     }

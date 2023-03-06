@@ -13,7 +13,7 @@ protocol ILoginPresenter: AnyObject {
     
     func loginStart()
     
-    func acceptLoginData(withEmail email: String, andPassword password: String)
+    func acceptLoginData(with userName: String, address email: String, and password: String)
     
 }
 
@@ -33,10 +33,10 @@ final class LoginPresenter: ILoginPresenter {
         wireframe.closeModule()
     }
     
-    func acceptLoginData(withEmail email: String, andPassword password: String) {
-        loginData = LoginUserRequest(email: email, password: password)
+    func acceptLoginData(with userName: String, address email: String, and password: String) {
+        loginData = LoginUserRequest(userName: userName, email: email, password: password)
     }
-    
+        
     
     func loginStart() {
         // email check
@@ -46,13 +46,22 @@ final class LoginPresenter: ILoginPresenter {
         // password check
         if !AuthValidator.isPasswordValid(for: loginData.password) {
             wireframe.showInvalidPasswordAlert()
+            return
         }
         
         AuthService.shared.registerUser(with: loginData) { [weak self] wasRegistered, error in
             if let error = error {
                 self?.wireframe.showAlert(input: AlertInput(message: error.message))
+                return
+            }
+            
+            if wasRegistered {
+                self?.wireframe.presentHomeModule()
+            } else {
+                self?.wireframe.showErrorSignIn()
             }
         }
+
     }
 }
     

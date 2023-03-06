@@ -9,6 +9,7 @@ import UIKit
 
 protocol ILoginWireframe: IBaseWireframe {
     func closeModule()
+    func presentHomeModule()
 }
 
 final class LoginWireframe: ILoginWireframe {
@@ -23,4 +24,10 @@ final class LoginWireframe: ILoginWireframe {
     func closeModule() {
         rootView?.closeViewController(animated: true)
     }
+    
+    func presentHomeModule() {
+        guard let view = router.resolver.resolve(IHomeView.self) as? UIViewController else { return }
+        router.present(view: view, animatedDisplay: true, presentType: .present)
+    }
+    
 }

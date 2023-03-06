@@ -16,6 +16,7 @@ final class AuthService {
     private init() { }
     
     func registerUser(with userRequest: LoginUserRequest, completion: @escaping (Bool, Error?) -> Void) {
+        let userName = userRequest.userName
         let userEmail = userRequest.email
         let userPassword = userRequest.password
         
@@ -31,12 +32,11 @@ final class AuthService {
             }
             
             let db = Firestore.firestore()
-            
             db.collection("users")
                 .document(resultUser.uid)
                 .setData([
-                    "userEmail": userEmail,
-                    "userPassword": userPassword
+                    "userName": userName,
+                    "userEmail": userEmail
                 ]) { error in
                     if let error = error {
                         completion(false, error)
