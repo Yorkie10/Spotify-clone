@@ -11,7 +11,7 @@ import UIKit
 
 public class AssemblyStorage {
     
-    public static var assemblies: [Assembly] = [ RegistrationAssembly(),
-                                                 LoginAssembly(),
+    public static var assemblies: [Assembly] = [ OnboardingAssembly(),
+                                                 RegistrationAssembly(),
                                                  HomeAssembly() ]
 }

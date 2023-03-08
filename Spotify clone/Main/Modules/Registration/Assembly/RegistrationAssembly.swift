@@ -2,7 +2,7 @@
 //  RegistrationAssembly.swift
 //  Spotify clone
 //
-//  Created by Yerkebulan Sharipov on 26.01.2023.
+//  Created by Yerkebulan Sharipov on 17.02.2023.
 //
 
 import UIKit
@@ -25,8 +25,8 @@ final class RegistrationAssembly: Assembly {
         }
         
         container.register(IRegistrationView.self) { (r) -> IRegistrationView in
-            let view: IRegistrationView = RegistrationViewController()
-            let presenter = r.resolve(IRegistrationPresenter.self, argument: view)
+            let view = RegistrationViewController()
+            let presenter = r.resolve(IRegistrationPresenter.self, argument: view as IRegistrationView)!
             view.presenter = presenter
             return view
         }

@@ -23,7 +23,7 @@ var window: UIWindow?
         window?.makeKeyAndVisible()
         FirebaseApp.configure()
         
-//        let userRequest = LoginUserRequest(email: "Nunez@gmail.com", password: "qwertty123")
+//        let userRequest = RegistrationUserRequest(email: "Nunez@gmail.com", password: "qwertty123")
 //        AuthService.shared.registerUser(with: userRequest) { wasRegistered, error in
 //            if let error = error {
 //                print("😍, \(error)")
@@ -32,7 +32,7 @@ var window: UIWindow?
         print("🌏", Auth.auth().currentUser?.email)
     
         
-        let view = AppRouter.shared.resolver.resolve(IRegistrationView.self) as! UIViewController
+        let view = AppRouter.shared.resolver.resolve(IOnboardingView.self) as! UIViewController
         AppRouter.shared.present(view: view, animatedDisplay: true, presentType: .root)
 
 //        let view = AppRouter.shared.resolver.resolve(ILoginView.self) as! UIViewController

@@ -1,5 +1,5 @@
 //
-//  RegistrationButton.swift
+//  OnboardingButton.swift
 //  Spotify clone
 //
 //  Created by Yerkebulan Sharipov on 24.01.2023.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-final class RegistrationButton: UIButton {
+final class OnboardingButton: UIButton {
     
     var dumpable: Bool = true
     

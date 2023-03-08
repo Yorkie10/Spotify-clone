@@ -8,7 +8,7 @@
 import UIKit
 
 
-enum RegistrationButtonType {
+enum OnboardingButtonType {
     
     case google
     case facebook

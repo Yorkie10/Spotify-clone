@@ -15,7 +15,7 @@ final class AuthService {
     
     private init() { }
     
-    func registerUser(with userRequest: LoginUserRequest, completion: @escaping (Bool, Error?) -> Void) {
+    func registerUser(with userRequest: RegistrationUserRequest, completion: @escaping (Bool, Error?) -> Void) {
         let userName = userRequest.userName
         let userEmail = userRequest.email
         let userPassword = userRequest.password
@@ -47,7 +47,7 @@ final class AuthService {
         }
     }
     
-    func signIn(with userRequest: LoginUserRequest, completion: @escaping (Error?) -> Void) {
+    func signIn(with userRequest: RegistrationUserRequest, completion: @escaping (Error?) -> Void) {
         Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password) { result, error in
             if let error = error {
                 completion(error)
