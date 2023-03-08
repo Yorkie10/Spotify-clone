@@ -94,6 +94,7 @@ final class RegistrationViewController: BaseViewController {
         btn.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
         btn.layer.cornerRadius = 21
         btn.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        btn.spinnerColor = .darkGray
         return btn
     }()
     
@@ -160,8 +161,11 @@ final class RegistrationViewController: BaseViewController {
         guard let userName = userNameTextfield.text,
               let email = emailTextfield.text,
               let password = passwordTextfield.text else { return }
-        presenter?.acceptLoginData(with: userName, address: email, and: password)
-        presenter?.loginStart()
+        nextButton.startAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.presenter?.accepAndRegistertLoginData(with: userName, address: email, and: password)
+            self?.nextButton.stopAnimation()
+        }
     }
 }
 

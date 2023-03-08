@@ -13,7 +13,7 @@ protocol IRegistrationWireframe: IBaseWireframe {
 }
 
 final class RegistrationWireframe: IRegistrationWireframe {
- 
+    
     var router: IAppRouter { AppRouter.shared }
     weak var rootView: UIViewController?
     
@@ -27,7 +27,13 @@ final class RegistrationWireframe: IRegistrationWireframe {
     
     func presentHomeModule() {
         guard let view = router.resolver.resolve(IHomeView.self) as? UIViewController else { return }
-        router.present(view: view, animatedDisplay: true, presentType: .present)
+        let navigationController = BaseNavigationController(rootViewController: view)
+        navigationController.modalPresentationStyle = .fullScreen
+        
+        if rootView?.navigationController == nil {
+            rootView?.present(navigationController, animated: true)
+        } else {
+            rootView?.navigationController?.present(navigationController, animated: true)
+        }
     }
-    
 }

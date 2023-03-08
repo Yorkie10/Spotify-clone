@@ -11,9 +11,7 @@ protocol IRegistrationPresenter: AnyObject {
     
     func closeTapped()
     
-    func loginStart()
-    
-    func acceptLoginData(with userName: String, address email: String, and password: String)
+    func accepAndRegistertLoginData(with userName: String, address email: String, and password: String)
     
 }
 
@@ -33,17 +31,13 @@ final class RegistrationPresenter: IRegistrationPresenter {
         wireframe.closeModule()
     }
     
-    func acceptLoginData(with userName: String, address email: String, and password: String) {
+    func accepAndRegistertLoginData(with userName: String, address email: String, and password: String) {
         loginData = RegistrationUserRequest(userName: userName, email: email, password: password)
-    }
         
-    
-    func loginStart() {
-        // email check
         if !AuthValidator.isValidEmail(for: loginData.email) {
             wireframe.showInvalidEmailAlert()
         }
-        // password check
+        
         if !AuthValidator.isPasswordValid(for: loginData.password) {
             wireframe.showInvalidPasswordAlert()
             return
@@ -61,7 +55,6 @@ final class RegistrationPresenter: IRegistrationPresenter {
                 self?.wireframe.showErrorSignIn()
             }
         }
-
     }
 }
     
